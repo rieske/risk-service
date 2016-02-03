@@ -29,10 +29,10 @@ public class EvaluateRiskRequestSerializationTest {
 	public void deserializesFromJson() throws JsonParseException, JsonMappingException, IOException {
 		EvaluateRiskRequest deserializedRequest = MAPPER.readValue(EVALUATE_RISK_REQUEST_JSON, EvaluateRiskRequest.class);
 
-		assertThat(deserializedRequest.getEmail()).isEqualTo("email@example.com");
-		assertThat(deserializedRequest.getFirstName()).isEqualTo("firstName");
-		assertThat(deserializedRequest.getLastName()).isEqualTo("lastName");
-		assertThat(deserializedRequest.getAmount()).isEqualTo(100);
+		assertThat(deserializedRequest.email).isEqualTo("email@example.com");
+		assertThat(deserializedRequest.firstName).isEqualTo("firstName");
+		assertThat(deserializedRequest.lastName).isEqualTo("lastName");
+		assertThat(deserializedRequest.amount).isEqualTo(100);
 	}
 
 }

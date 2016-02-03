@@ -2,8 +2,8 @@ package lt.vv.risk.api;
 
 public class RiskDecision {
 
-	private final Boolean accepted;
-	private final String reason;
+	public final boolean accepted;
+	public final String reason;
 	
 	public static RiskDecision accept() {
 		return new RiskDecision(true, "ok");
@@ -17,17 +17,9 @@ public class RiskDecision {
 		return new RiskDecision(false, "debt");
 	}
 
-	private RiskDecision(Boolean accepted, String reason) {
+	private RiskDecision(boolean accepted, String reason) {
 		this.accepted = accepted;
 		this.reason = reason;
-	}
-
-	public Boolean getAccepted() {
-		return accepted;
-	}
-
-	public String getReason() {
-		return reason;
 	}
 
 }

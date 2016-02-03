@@ -1,18 +1,14 @@
 package lt.vv.risk;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
+
 import lt.vv.risk.repository.CustomerCreditRepository;
 import lt.vv.risk.services.RiskManager;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
-
-@Configuration
-@ComponentScan("lt.vv.risk")
-@EnableAutoConfiguration
+@SpringBootApplication
 public class RiskApplication {
 
 	public static void main(String[] args) {

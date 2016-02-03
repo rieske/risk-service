@@ -14,17 +14,17 @@ public class EvaluateRiskRequest {
 
 	@Email
 	@NotEmpty
-	private final String email;
+	public final String email;
 
 	@NotBlank
-	private final String firstName;
+	public final String firstName;
 
 	@NotBlank
-	private final String lastName;
+	public final String lastName;
 
 	@NotNull
 	@Range(min = 0)
-	private final Integer amount;
+	public final Integer amount;
 
 	@JsonCreator
 	public EvaluateRiskRequest(
@@ -37,22 +37,6 @@ public class EvaluateRiskRequest {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.amount = amount;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public Integer getAmount() {
-		return amount;
 	}
 
 }

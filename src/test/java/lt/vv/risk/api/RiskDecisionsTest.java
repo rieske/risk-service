@@ -10,20 +10,20 @@ public class RiskDecisionsTest {
 
 	@Test
 	public void acceptsRisk() {
-		assertThat(RiskDecision.accept().getAccepted()).isTrue();
-		assertThat(RiskDecision.accept().getReason()).isEqualTo("ok");
+		assertThat(RiskDecision.accept().accepted).isTrue();
+		assertThat(RiskDecision.accept().reason).isEqualTo("ok");
 	}
 
 	@Test
 	public void rejectsAmount() {
-		assertThat(RiskDecision.rejectAmount().getAccepted()).isFalse();
-		assertThat(RiskDecision.rejectAmount().getReason()).isEqualTo("amount");
+		assertThat(RiskDecision.rejectAmount().accepted).isFalse();
+		assertThat(RiskDecision.rejectAmount().reason).isEqualTo("amount");
 	}
 
 	@Test
 	public void rejectsDeby() {
-		assertThat(RiskDecision.rejectDebt().getAccepted()).isFalse();
-		assertThat(RiskDecision.rejectDebt().getReason()).isEqualTo("debt");
+		assertThat(RiskDecision.rejectDebt().accepted).isFalse();
+		assertThat(RiskDecision.rejectDebt().reason).isEqualTo("debt");
 	}
 
 }

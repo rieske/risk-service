@@ -66,8 +66,8 @@ public class RiskManagerTest {
 
 		RiskDecision decision = riskManager.evaluateRisk(CUSTOMER, amount);
 
-		assertThat(decision.getAccepted()).isTrue();
-		assertThat(decision.getReason()).isEqualTo("ok");
+		assertThat(decision.accepted).isTrue();
+		assertThat(decision.reason).isEqualTo("ok");
 		verify(creditRepository).creditCustomerWithAmount(CUSTOMER, amount);
 	}
 
@@ -87,8 +87,8 @@ public class RiskManagerTest {
 
 		RiskDecision decision = riskManager.evaluateRisk(CUSTOMER, amount);
 
-		assertThat(decision.getAccepted()).isTrue();
-		assertThat(decision.getReason()).isEqualTo("ok");
+		assertThat(decision.accepted).isTrue();
+		assertThat(decision.reason).isEqualTo("ok");
 		verify(creditRepository).creditCustomerWithAmount(CUSTOMER, amount);
 	}
 
@@ -108,8 +108,8 @@ public class RiskManagerTest {
 
 		RiskDecision decision = riskManager.evaluateRisk(CUSTOMER, amount);
 
-		assertThat(decision.getAccepted()).isTrue();
-		assertThat(decision.getReason()).isEqualTo("ok");
+		assertThat(decision.accepted).isTrue();
+		assertThat(decision.reason).isEqualTo("ok");
 		verify(creditRepository).creditCustomerWithAmount(CUSTOMER, amount);
 	}
 
@@ -129,8 +129,8 @@ public class RiskManagerTest {
 
 		RiskDecision decision = riskManager.evaluateRisk(CUSTOMER, amount);
 
-		assertThat(decision.getAccepted()).isFalse();
-		assertThat(decision.getReason()).isEqualTo("amount");
+		assertThat(decision.accepted).isFalse();
+		assertThat(decision.reason).isEqualTo("amount");
 		verifyNoMoreInteractions(creditRepository);
 	}
 
@@ -151,8 +151,8 @@ public class RiskManagerTest {
 
 		RiskDecision decision = riskManager.evaluateRisk(CUSTOMER, amount);
 
-		assertThat(decision.getAccepted()).isFalse();
-		assertThat(decision.getReason()).isEqualTo("debt");
+		assertThat(decision.accepted).isFalse();
+		assertThat(decision.reason).isEqualTo("debt");
 		verify(creditRepository).getCustomerCredit(CUSTOMER);
 		verifyNoMoreInteractions(creditRepository);
 	}

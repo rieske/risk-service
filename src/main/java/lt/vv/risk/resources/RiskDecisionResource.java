@@ -25,7 +25,7 @@ public class RiskDecisionResource {
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public RiskDecision evaluateRisk(@Valid @RequestBody EvaluateRiskRequest evaluateRiskRequest) {
-		return riskManager.evaluateRisk(evaluateRiskRequest.getEmail(), evaluateRiskRequest.getAmount());
+		return riskManager.evaluateRisk(evaluateRiskRequest.email, evaluateRiskRequest.amount);
 	}
 
 }

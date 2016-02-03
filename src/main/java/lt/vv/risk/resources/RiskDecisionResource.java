@@ -1,9 +1,9 @@
-package lt.vv.risk.api;
+package lt.vv.risk.resources;
 
 import javax.validation.Valid;
 
-import lt.vv.risk.api.model.EvaluateRiskRequest;
-import lt.vv.risk.api.model.RiskDecision;
+import lt.vv.risk.api.EvaluateRiskRequest;
+import lt.vv.risk.api.RiskDecision;
 import lt.vv.risk.services.RiskManager;
 
 import org.springframework.beans.factory.annotation.Autowired;

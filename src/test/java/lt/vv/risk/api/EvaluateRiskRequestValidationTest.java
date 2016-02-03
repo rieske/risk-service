@@ -1,4 +1,4 @@
-package lt.vv.risk.api.model;
+package lt.vv.risk.api;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,6 +16,8 @@ import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
 import com.google.common.collect.Lists;
+
+import lt.vv.risk.api.EvaluateRiskRequest;
 
 
 @RunWith(Theories.class)

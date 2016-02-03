@@ -1,4 +1,4 @@
-package lt.vv.risk.api.model;
+package lt.vv.risk.api;
 
 import javax.validation.constraints.NotNull;
 

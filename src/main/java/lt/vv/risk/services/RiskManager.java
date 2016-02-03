@@ -1,6 +1,6 @@
 package lt.vv.risk.services;
 
-import lt.vv.risk.api.model.RiskDecision;
+import lt.vv.risk.api.RiskDecision;
 import lt.vv.risk.repository.CustomerCreditRepository;
 
 public class RiskManager {

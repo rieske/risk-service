@@ -1,10 +1,12 @@
-package lt.vv.risk.api;
+package lt.vv.risk.resources;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import lt.vv.risk.api.model.RiskDecision;
+
+import lt.vv.risk.api.RiskDecision;
+import lt.vv.risk.resources.RiskDecisionResource;
 import lt.vv.risk.services.RiskManager;
 
 import org.junit.Before;

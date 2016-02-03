@@ -24,7 +24,7 @@ import com.google.common.collect.ContiguousSet;
 import com.google.common.collect.DiscreteDomain;
 import com.google.common.collect.Range;
 
-import lt.vv.risk.api.model.RiskDecision;
+import lt.vv.risk.api.RiskDecision;
 import lt.vv.risk.repository.CustomerCreditRepository;
 
 @RunWith(Theories.class)

@@ -1,4 +1,4 @@
-package lt.vv.risk.api.model;
+package lt.vv.risk.api;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -9,6 +9,8 @@ import org.junit.Test;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import lt.vv.risk.api.EvaluateRiskRequest;
 
 public class EvaluateRiskRequestSerializationTest {
 

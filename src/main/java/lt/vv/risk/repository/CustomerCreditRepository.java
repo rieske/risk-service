@@ -10,7 +10,7 @@ import com.google.common.collect.Maps;
 @Repository
 public class CustomerCreditRepository {
 
-	private final Map<String, Integer> customerCredits = Maps.newHashMap();
+	private final Map<String, Integer> customerCredits = Maps.newConcurrentMap();
 
 	public Integer getCustomerCredit(String emailAddress) {
 		return Optional.fromNullable(customerCredits.get(emailAddress)).or(0);

@@ -1,7 +1,6 @@
 package lt.vv.risk.api.model;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
 
@@ -28,10 +27,10 @@ public class EvaluateRiskRequestSerializationTest {
 	public void deserializesFromJson() throws JsonParseException, JsonMappingException, IOException {
 		EvaluateRiskRequest deserializedRequest = MAPPER.readValue(EVALUATE_RISK_REQUEST_JSON, EvaluateRiskRequest.class);
 
-		assertThat(deserializedRequest.getEmail(), equalTo("email@example.com"));
-		assertThat(deserializedRequest.getFirstName(), equalTo("firstName"));
-		assertThat(deserializedRequest.getLastName(), equalTo("lastName"));
-		assertThat(deserializedRequest.getAmount(), equalTo(100));
+		assertThat(deserializedRequest.getEmail()).isEqualTo("email@example.com");
+		assertThat(deserializedRequest.getFirstName()).isEqualTo("firstName");
+		assertThat(deserializedRequest.getLastName()).isEqualTo("lastName");
+		assertThat(deserializedRequest.getAmount()).isEqualTo(100);
 	}
 
 }

@@ -1,7 +1,6 @@
 package lt.vv.risk.repository;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
@@ -11,9 +10,9 @@ public class CustomerCreditRepositoryTest {
 	public void returnsZeroCreditForNewCustomers() {
 		CustomerCreditRepository repository = new CustomerCreditRepository();
 
-		assertThat(repository.getCustomerCredit("new1"), equalTo(0));
-		assertThat(repository.getCustomerCredit("new1"), equalTo(0));
-		assertThat(repository.getCustomerCredit("new2"), equalTo(0));
+		assertThat(repository.getCustomerCredit("new1")).isZero();
+		assertThat(repository.getCustomerCredit("new1")).isZero();
+		assertThat(repository.getCustomerCredit("new2")).isZero();
 	}
 
 	@Test
@@ -22,7 +21,7 @@ public class CustomerCreditRepositoryTest {
 
 		repository.creditCustomerWithAmount("customer", 100);
 		
-		assertThat(repository.getCustomerCredit("customer"), equalTo(100));
+		assertThat(repository.getCustomerCredit("customer")).isEqualTo(100);
 	}
 	
 	@Test
@@ -32,6 +31,6 @@ public class CustomerCreditRepositoryTest {
 		repository.creditCustomerWithAmount("customer", 100);
 		repository.creditCustomerWithAmount("customer", 110);
 
-		assertThat(repository.getCustomerCredit("customer"), equalTo(210));
+		assertThat(repository.getCustomerCredit("customer")).isEqualTo(210);
 	}
 }

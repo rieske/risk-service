@@ -1,7 +1,6 @@
 package lt.vv.risk.api.model;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
@@ -16,7 +15,7 @@ public class RiskDecisionSerializationTest {
 	public void serializesRiskDecisionToJson() throws JsonProcessingException {
 		String jsonRiskDecision = MAPPER.writeValueAsString(RiskDecision.accept());
 
-		assertThat(jsonRiskDecision, equalTo("{\"accepted\":true,\"reason\":\"ok\"}"));
+		assertThat(jsonRiskDecision).isEqualTo("{\"accepted\":true,\"reason\":\"ok\"}");
 	}
 
 }

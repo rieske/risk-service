@@ -1,9 +1,6 @@
 package lt.vv.risk.api.model;
 
-import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import java.util.Set;
@@ -19,6 +16,7 @@ import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
 import com.google.common.collect.Lists;
+
 
 @RunWith(Theories.class)
 public class EvaluateRiskRequestValidationTest {
@@ -54,7 +52,7 @@ public class EvaluateRiskRequestValidationTest {
 		Set<ConstraintViolation<EvaluateRiskRequest>> violations =
 				VALIDATOR.validate(new EvaluateRiskRequest(email, firstName, lastName, amount));
 
-		assertThat(violations, empty());
+		assertThat(violations).isEmpty();
 	}
 
 	@Theory
@@ -64,12 +62,7 @@ public class EvaluateRiskRequestValidationTest {
 			@FromDataPoints("validLastNames") String lastName,
 			@FromDataPoints("validAmounts") Integer amount)
 	{
-		Set<ConstraintViolation<EvaluateRiskRequest>> violations =
-				VALIDATOR.validate(new EvaluateRiskRequest(email, firstName, lastName, amount));
-
-		assertThat(violations, hasSize(1));
-		ConstraintViolation<EvaluateRiskRequest> emailViolation = violations.iterator().next();
-		assertThat(emailViolation.getPropertyPath().toString(), equalTo("email"));
+		validateConstraint("email", new EvaluateRiskRequest(email, firstName, lastName, amount));
 	}
 
 	@Theory
@@ -79,12 +72,7 @@ public class EvaluateRiskRequestValidationTest {
 			@FromDataPoints("validLastNames") String lastName,
 			@FromDataPoints("validAmounts") Integer amount)
 	{
-		Set<ConstraintViolation<EvaluateRiskRequest>> violations =
-				VALIDATOR.validate(new EvaluateRiskRequest(email, firstName, lastName, amount));
-
-		assertThat(violations, hasSize(1));
-		ConstraintViolation<EvaluateRiskRequest> emailViolation = violations.iterator().next();
-		assertThat(emailViolation.getPropertyPath().toString(), equalTo("firstName"));
+		validateConstraint("firstName", new EvaluateRiskRequest(email, firstName, lastName, amount));
 	}
 
 	@Theory
@@ -94,12 +82,7 @@ public class EvaluateRiskRequestValidationTest {
 			@FromDataPoints("invalidLastNames") String lastName,
 			@FromDataPoints("validAmounts") Integer amount)
 	{
-		Set<ConstraintViolation<EvaluateRiskRequest>> violations =
-				VALIDATOR.validate(new EvaluateRiskRequest(email, firstName, lastName, amount));
-
-		assertThat(violations, hasSize(1));
-		ConstraintViolation<EvaluateRiskRequest> emailViolation = violations.iterator().next();
-		assertThat(emailViolation.getPropertyPath().toString(), equalTo("lastName"));
+		validateConstraint("lastName", new EvaluateRiskRequest(email, firstName, lastName, amount));
 	}
 
 	@Theory
@@ -109,12 +92,14 @@ public class EvaluateRiskRequestValidationTest {
 			@FromDataPoints("validLastNames") String lastName,
 			@FromDataPoints("invalidAmounts") Integer amount)
 	{
-		Set<ConstraintViolation<EvaluateRiskRequest>> violations =
-				VALIDATOR.validate(new EvaluateRiskRequest(email, firstName, lastName, amount));
-
-		assertThat(violations, hasSize(1));
-		ConstraintViolation<EvaluateRiskRequest> emailViolation = violations.iterator().next();
-		assertThat(emailViolation.getPropertyPath().toString(), equalTo("amount"));
+		validateConstraint("amount", new EvaluateRiskRequest(email, firstName, lastName, amount));
 	}
 
+	private void validateConstraint(String constraint, EvaluateRiskRequest request) {
+		Set<ConstraintViolation<EvaluateRiskRequest>> violations = VALIDATOR.validate(request);
+
+		assertThat(violations).hasSize(1);
+		ConstraintViolation<EvaluateRiskRequest> emailViolation = violations.iterator().next();
+		assertThat(emailViolation.getPropertyPath().toString()).isEqualTo(constraint);
+	}
 }

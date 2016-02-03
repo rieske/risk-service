@@ -1,5 +1,7 @@
 #Simple Risk Decision Service
 
+[![Build Status](https://travis-ci.org/rieske/risk-service.png?branch=master)](https://travis-ci.org/rieske/risk-service) [![Build Status](https://drone.io/github.com/rieske/risk-service/status.png)](https://drone.io/github.com/rieske/risk-service/latest)
+
 RESTful API for simplified risk decision service
 
 ##Building
@@ -9,7 +11,7 @@ Gradle wrapper is included so the simplest thing to do is:
 
 ##Running
 
-To spawn an embedded Tomcat at port 8080:
+To spawn an embedded Tomcat on port 8080:
 `./gradlew run`
 
 ##API

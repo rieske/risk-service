@@ -12,12 +12,22 @@ apply plugin: 'java'
 apply plugin: 'spring-boot'
 apply plugin: 'findbugs'
 apply plugin: 'pmd'
+apply plugin: 'jacoco'
+apply plugin: 'checkstyle'
+apply plugin: 'com.github.kt3k.coveralls'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
 }
 
 sourceSets {
@@ -32,6 +42,13 @@ task componentTest(type: Test) {
     classpath = sourceSets.componentTest.runtimeClasspath
 }
 
+componentTest {
+    jacoco {
+        append = true
+        destinationFile = file("$buildDir/jacoco/test.exec")
+    }
+}
+
 tasks.withType(FindBugs) {
     reports {
         xml.enabled = false
@@ -41,6 +58,11 @@ tasks.withType(FindBugs) {
  
 findbugs {
     sourceSets = [sourceSets.main]
+}
+
+checkstyle {
+	toolVersion = "6.0"
+	configFile = new File(rootDir, "checkstyle.xml")
 }
 
 componentTest.dependsOn test

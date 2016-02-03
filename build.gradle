@@ -37,7 +37,11 @@ tasks.withType(FindBugs) {
         xml.enabled = false
         html.enabled = true
     }
- }
+}
+ 
+findbugs {
+    sourceSets = [sourceSets.main]
+}
 
 componentTest.dependsOn test
 check.dependsOn componentTest

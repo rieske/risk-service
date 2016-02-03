@@ -1,6 +1,6 @@
 #Simple Risk Decision Service
 
-[![Build Status](https://travis-ci.org/rieske/risk-service.png?branch=master)](https://travis-ci.org/rieske/risk-service) [![Build Status](https://drone.io/github.com/rieske/risk-service/status.png)](https://drone.io/github.com/rieske/risk-service/latest) 
+[![Build Status](https://travis-ci.org/rieske/risk-service.png?branch=master)](https://travis-ci.org/rieske/risk-service) [![Build Status](https://drone.io/github.com/rieske/risk-service/status.png)](https://drone.io/github.com/rieske/risk-service/latest) [![Coverage Status](https://coveralls.io/repos/github/rieske/risk-service/badge.svg?branch=master)](https://coveralls.io/github/rieske/risk-service?branch=master)
 
 RESTful API for simplified risk decision service
 

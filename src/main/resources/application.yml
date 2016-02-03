@@ -1,0 +1,3 @@
+riskManager:
+  lowRiskAmount: 10
+  creditLimit: 1000

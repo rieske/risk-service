@@ -1,23 +1,19 @@
 package lt.vv.risk.api;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.List;
-import java.util.Set;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.FromDataPoints;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
-import com.google.common.collect.Lists;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
-import lt.vv.risk.api.EvaluateRiskRequest;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 @RunWith(Theories.class)
@@ -26,23 +22,23 @@ public class EvaluateRiskRequestValidationTest {
 	private static final Validator VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
 
 	@DataPoints("invalidEmails")
-	public static List<String> invalidEmails = Lists
-			.newArrayList("", " ", "\t", "\n", "asdfasdf", "@adsf", "asd@", " test@test.com ", "test@test.com\n", null);
+	public static List<String> invalidEmails = Arrays
+			.asList("", " ", "\t", "\n", "asdfasdf", "@adsf", "asd@", " test@test.com ", "test@test.com\n", null);
 	@DataPoints("invalidFirstNames")
-	public static List<String> invalidFirstNames = Lists.newArrayList("", " ", "\t", "\n", null);
+	public static List<String> invalidFirstNames = Arrays.asList("", " ", "\t", "\n", null);
 	@DataPoints("invalidLastNames")
-	public static List<String> invalidLastNames = Lists.newArrayList("", " ", "\t", "\n", null);
+	public static List<String> invalidLastNames = Arrays.asList("", " ", "\t", "\n", null);
 	@DataPoints("invalidAmounts")
-	public static List<Integer> invalidAmounts = Lists.newArrayList(Integer.MIN_VALUE, -1, -1000);
+	public static List<Integer> invalidAmounts = Arrays.asList(Integer.MIN_VALUE, -1, -1000);
 
 	@DataPoints("validEmails")
-	public static List<String> validEmails = Lists.newArrayList("a@b.c", "a@b", "test@test.com", "test@test.com", "email@example.com");
+	public static List<String> validEmails = Arrays.asList("a@b.c", "a@b", "test@test.com", "test@test.com", "email@example.com");
 	@DataPoints("validFirstNames")
-	public static List<String> validFirstNames = Lists.newArrayList("firstName", "a", " a ", "asdf asdf", "aaa1234", "45 d", "$%^#$");
+	public static List<String> validFirstNames = Arrays.asList("firstName", "a", " a ", "asdf asdf", "aaa1234", "45 d", "$%^#$");
 	@DataPoints("validLastNames")
-	public static List<String> validLastNames = Lists.newArrayList("lastName", "a", " a ", "asdf asdf", "aaa1234", "45 d", "$%^#$");
+	public static List<String> validLastNames = Arrays.asList("lastName", "a", " a ", "asdf asdf", "aaa1234", "45 d", "$%^#$");
 	@DataPoints("validAmounts")
-	public static List<Integer> validAmounts = Lists.newArrayList(0, 1, 5, 5000, 100000, Integer.MAX_VALUE);
+	public static List<Integer> validAmounts = Arrays.asList(0, 1, 5, 5000, 100000, Integer.MAX_VALUE);
 
 	@Theory
 	public void acceptsValidRiskRequest(

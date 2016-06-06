@@ -1,15 +1,15 @@
 package lt.vv.risk.repository;
 
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.stereotype.Repository;
 
-import com.google.common.collect.Maps;
 
 @Repository
 public class CustomerCreditRepository {
 
-	private final Map<String, Integer> customerCredits = Maps.newConcurrentMap();
+	private final Map<String, Integer> customerCredits = new ConcurrentHashMap<>();
 
 	public Integer getCustomerCredit(String emailAddress) {
 		return customerCredits.getOrDefault(emailAddress, 0);

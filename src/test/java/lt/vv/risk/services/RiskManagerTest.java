@@ -1,5 +1,18 @@
 package lt.vv.risk.services;
 
+import lt.vv.risk.api.RiskDecision;
+import lt.vv.risk.repository.CustomerCreditRepository;
+import org.junit.Before;
+import org.junit.experimental.theories.DataPoints;
+import org.junit.experimental.theories.FromDataPoints;
+import org.junit.experimental.theories.Theories;
+import org.junit.experimental.theories.Theory;
+import org.junit.runner.RunWith;
+
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
@@ -11,36 +24,20 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
-import java.util.Set;
-
-import org.junit.Before;
-import org.junit.experimental.theories.DataPoints;
-import org.junit.experimental.theories.FromDataPoints;
-import org.junit.experimental.theories.Theories;
-import org.junit.experimental.theories.Theory;
-import org.junit.runner.RunWith;
-
-import com.google.common.collect.ContiguousSet;
-import com.google.common.collect.DiscreteDomain;
-import com.google.common.collect.Range;
-
-import lt.vv.risk.api.RiskDecision;
-import lt.vv.risk.repository.CustomerCreditRepository;
-
 @RunWith(Theories.class)
 public class RiskManagerTest {
 
 	@DataPoints("lowRiskAmounts")
-	public static Set<Integer> lowRiskAmounts = ContiguousSet.create(Range.closed(0, 10), DiscreteDomain.integers());
+	public static Set<Integer> lowRiskAmounts = IntStream.range(0, 10).boxed().collect(Collectors.toSet());
 
 	@DataPoints("creditLimits")
-	public static Set<Integer> creditLimits = ContiguousSet.create(Range.closed(0, 10), DiscreteDomain.integers());
+	public static Set<Integer> creditLimits = IntStream.range(0, 10).boxed().collect(Collectors.toSet());
 
 	@DataPoints("amounts")
-	public static Set<Integer> amounts = ContiguousSet.create(Range.closed(0, 10), DiscreteDomain.integers());
+	public static Set<Integer> amounts = IntStream.range(0, 10).boxed().collect(Collectors.toSet());
 
 	@DataPoints("currentCreditAmounts")
-	public static Set<Integer> currentCreditAmounts = ContiguousSet.create(Range.closed(0, 10), DiscreteDomain.integers());
+	public static Set<Integer> currentCreditAmounts = IntStream.range(0, 10).boxed().collect(Collectors.toSet());
 
 	private static final String CUSTOMER = "customerEmail";
 

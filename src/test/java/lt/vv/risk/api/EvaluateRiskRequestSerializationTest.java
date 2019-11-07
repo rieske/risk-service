@@ -1,16 +1,11 @@
 package lt.vv.risk.api;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Test;
 
 import java.io.IOException;
 
-import org.junit.Test;
-
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import lt.vv.risk.api.EvaluateRiskRequest;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class EvaluateRiskRequestSerializationTest {
 
@@ -26,7 +21,7 @@ public class EvaluateRiskRequestSerializationTest {
 	// @formatter:on
 
 	@Test
-	public void deserializesFromJson() throws JsonParseException, JsonMappingException, IOException {
+	public void deserializesFromJson() throws IOException {
 		EvaluateRiskRequest deserializedRequest = MAPPER.readValue(EVALUATE_RISK_REQUEST_JSON, EvaluateRiskRequest.class);
 
 		assertThat(deserializedRequest.email).isEqualTo("email@example.com");

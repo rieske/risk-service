@@ -1,12 +1,11 @@
 package lt.vv.risk;
 
+import lt.vv.risk.repository.CustomerCreditRepository;
+import lt.vv.risk.services.RiskManager;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
-
-import lt.vv.risk.repository.CustomerCreditRepository;
-import lt.vv.risk.services.RiskManager;
 
 @SpringBootApplication
 public class RiskApplication {

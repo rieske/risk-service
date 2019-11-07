@@ -1,27 +1,27 @@
-#Simple Risk Decision Service
+# Simple Risk Decision Service
 
-[![Build Status](https://travis-ci.org/rieske/risk-service.png?branch=master)](https://travis-ci.org/rieske/risk-service) [![Build Status](https://drone.io/github.com/rieske/risk-service/status.png)](https://drone.io/github.com/rieske/risk-service/latest) [![Coverage Status](https://coveralls.io/repos/github/rieske/risk-service/badge.svg?branch=master)](https://coveralls.io/github/rieske/risk-service?branch=master)
+[![Actions Status](https://github.com/rieske/risk-service/workflows/build/badge.svg)](https://github.com/rieske/risk-service/actions) [![Build Status](https://travis-ci.org/rieske/risk-service.png?branch=master)](https://travis-ci.org/rieske/risk-service) [![Build Status](https://drone.io/github.com/rieske/risk-service/status.png)](https://drone.io/github.com/rieske/risk-service/latest) [![Coverage Status](https://coveralls.io/repos/github/rieske/risk-service/badge.svg?branch=master)](https://coveralls.io/github/rieske/risk-service?branch=master)
 
 RESTful API for simplified risk decision service
 
-##Building
+## Building
 
 Gradle wrapper is included so the simplest thing to do is:
 `./gradlew build`
 
-##Running
+## Running
 
 To spawn an embedded Tomcat on port 8080:
 `./gradlew run`
 
-##API
+## API
 
 The API contains a single `/decision` endpoint. It will return 200 on any correctly formed request with risk decision details in the response object.
 Other standard HTTP status codes are also returned:
 400 - bad request (incorrectly formed json/field validation failure)
 415 - unspecified or incorrect content-type (application/json is required)
 
-#####Request structure
+##### Request structure
 
 ```json
 {
@@ -32,7 +32,7 @@ Other standard HTTP status codes are also returned:
 }
 ```
 
-#####Response structure
+##### Response structure
 
 ```json
 {
@@ -41,14 +41,14 @@ Other standard HTTP status codes are also returned:
 }
 ```
 
-#####Example interaction
+##### Example interaction
 
 `curl -d '{"email":"a@b.se", "first_name":"a","last_name":"b","amount":10}' http://localhost:8080/decision -H "Content-Type: application/json"`
 
 Note the mandatory `Content-Type` header.
 
 
-##Implementation notes
+## Implementation notes
 
 Spring Boot is used as the main framework (Spring's MVC and DI together with boot actuator).
 

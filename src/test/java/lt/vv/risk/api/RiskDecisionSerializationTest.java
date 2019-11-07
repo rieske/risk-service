@@ -1,13 +1,10 @@
 package lt.vv.risk.api;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import org.junit.Test;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Test;
 
-import lt.vv.risk.api.RiskDecision;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RiskDecisionSerializationTest {
 
